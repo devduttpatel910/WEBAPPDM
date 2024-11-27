@@ -5,59 +5,36 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f0f8ff; /* Light background color */
+    background-color: #f0f8ff; /* Light blue background */
 }
 
 h1 {
-    margin: 10px 0;
-    font-size: 36px; /* Increased size */
+    margin: 20px 0;
+    font-size: 36px; /* Larger text */
     text-align: center;
-    color: #007BFF; /* DMCabs color */
-}
-
-#map {
-    height: 60vh;
-    width: 90vw;
-    border: 2px solid #007BFF; /* Border color */
-    margin-top: 10px;
-    border-radius: 10px; /* Rounded corners */
+    color: #2c3e50; /* Dark blue */
 }
 
 button {
     margin: 10px;
-    padding: 12px;
+    padding: 12px 20px;
     font-size: 18px;
-    background-color: #28a745; /* Green buttons */
-    color: white;
+    color: #fff;
+    background-color: #3498db; /* Blue buttons */
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #2980b9; /* Darker blue on hover */
 }
 
-#alcohol-status, #ride-status {
-    margin-top: 10px;
-    padding: 12px;
-    border: 2px solid #ccc;
-    width: 80%;
-    text-align: center;
-    background-color: white;
+#map {
+    height: 80vh;
+    width: 90vw;
+    border: 2px solid #3498db;
     border-radius: 10px;
-}
-
-#alcohol-status h2, #ride-status h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-
-#alcohol-message {
-    font-weight: bold;
-    color: red;
-}
-
-#driver-info {
-    color: #333;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
