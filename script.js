@@ -1,4 +1,4 @@
-// Initialize map and set view to a default location
+// Initialize map and set view to a default location.
 const map = L.map('map').setView([20, 0], 2); // World view to start
 
 // Add satellite map layer from Mapbox
