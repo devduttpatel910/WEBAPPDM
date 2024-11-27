@@ -1,4 +1,3 @@
-//last try
 // Initialize map and set view to a default location
 const map = L.map('map').setView([20, 0], 2); // World view to start
 
@@ -10,6 +9,14 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/
 }).addTo(map);
 
 let userMarker, driverMarker;
+
+// Custom car icon
+const carIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/481/481200.png', // Car icon URL
+    iconSize: [32, 32], // Size of the icon
+    iconAnchor: [16, 32], // Anchor point
+    popupAnchor: [0, -32] // Popup anchor point
+});
 
 // Function to find and display user's location
 function findUserLocation() {
@@ -46,7 +53,7 @@ function simulateDriverLocation() {
 
     if (driverMarker) map.removeLayer(driverMarker);
 
-    driverMarker = L.marker([driverLat, driverLng]).addTo(map)
+    driverMarker = L.marker([driverLat, driverLng], { icon: carIcon }).addTo(map)
         .bindPopup("Driver is nearby").openPopup();
 
     document.getElementById('driver-info').innerText = "Driver assigned and en route!";
