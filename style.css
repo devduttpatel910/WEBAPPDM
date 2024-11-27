@@ -1,1 +1,56 @@
-//last try
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    margin: 10px 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+#map {
+    height: 60vh;
+    width: 90vw;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#alcohol-status, #ride-status {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 80%;
+    text-align: center;
+    background-color: white;
+}
+
+#alcohol-status h2, #ride-status h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+#alcohol-message {
+    font-weight: bold;
+    color: red;
+}
