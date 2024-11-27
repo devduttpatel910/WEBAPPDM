@@ -59,14 +59,4 @@ function simulateDriverLocation() {
     // Add driver marker with the custom car icon
     driverMarker = L.marker([driverLat, driverLng], { icon: carIcon }).addTo(map)
         .bindPopup("Driver is nearby").openPopup();
-
-    // Update information text
-    document.getElementById('driver-info').innerText = "Driver assigned and en route!";
 }
-
-// Request notification permission on page load
-document.addEventListener('DOMContentLoaded', () => {
-    if (Notification.permission !== "granted") {
-        Notification.requestPermission();
-    }
-});
