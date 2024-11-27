@@ -1,1 +1,51 @@
 //last try
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMCabs Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <h1>DMCabs Services</h1>
+    <button onclick="findUserLocation()">Find My Location</button>
+    <button onclick="simulateDriverLocation()">Simulate Driver Location</button>
+    <button onclick="checkAlcoholLevel()">Check Alcohol Level</button>
+
+    <div id="map"></div>
+
+    <!-- Alcohol Level Display -->
+    <div id="alcohol-status">
+        <h2>Alcohol Test Meter</h2>
+        <p id="alcohol-value">Level: 0</p>
+        <p id="alcohol-message"></p>
+    </div>
+
+    <!-- Ride Status Display -->
+    <div id="ride-status">
+        <h2>Ride Information</h2>
+        <p id="driver-info">Waiting for driver...</p>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyARNvsfeaO4qnlsxTU0ts0dYzo15k44YKg",
+            authDomain: "palchol.firebaseapp.com",
+            databaseURL: "https://palchol-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "palchol",
+            storageBucket: "palchol.firebasestorage.app",
+            messagingSenderId: "474802254344",
+            appId: "1:474802254344:web:1ed97faaa247e7e23b97bd"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
