@@ -1,4 +1,4 @@
-// Initialize map and set view to a default location.
+// Initialize the map and set view to a default location (centered on the world)
 const map = L.map('map').setView([20, 0], 2); // World view to start
 
 // Add satellite map layer from Mapbox
@@ -34,6 +34,8 @@ function findUserLocation() {
             
             // Center map to user's location
             map.setView([userLat, userLng], 14);
+        }, error => {
+            alert(`Geolocation error: ${error.message}`);
         });
     } else {
         alert("Geolocation is not supported by this browser.");
@@ -51,44 +53,15 @@ function simulateDriverLocation() {
     const driverLat = userLocation.lat + (Math.random() * 0.02 - 0.01);
     const driverLng = userLocation.lng + (Math.random() * 0.02 - 0.01);
 
+    // Remove old driver marker if it exists
     if (driverMarker) map.removeLayer(driverMarker);
 
+    // Add driver marker with the custom car icon
     driverMarker = L.marker([driverLat, driverLng], { icon: carIcon }).addTo(map)
         .bindPopup("Driver is nearby").openPopup();
 
+    // Update information text
     document.getElementById('driver-info').innerText = "Driver assigned and en route!";
-}
-
-// Reference the alcohol level node in Firebase
-const alcoholLevelRef = db.ref('alcoholLevel');
-const threshold = 500;  // Set a threshold for notifications
-
-// Fetch and display alcohol level
-function checkAlcoholLevel() {
-    alcoholLevelRef.once('value').then(snapshot => {
-        const alcoholLevel = snapshot.val();
-        document.getElementById('alcohol-value').innerText = `Level: ${alcoholLevel}`;
-
-        if (alcoholLevel > threshold) {
-            document.getElementById('alcohol-message').innerText = "Warning: High Alcohol Level!";
-            sendNotification("High Alcohol Level Detected! Ride not allowed.");
-        } else {
-            document.getElementById('alcohol-message').innerText = "Alcohol Level Normal. Ride can proceed.";
-        }
-    });
-}
-
-// Send a browser notification
-function sendNotification(message) {
-    if (Notification.permission === "granted") {
-        new Notification("DMCabs Services", { body: message });
-    } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-                new Notification("DMCabs Services", { body: message });
-            }
-        });
-    }
 }
 
 // Request notification permission on page load
