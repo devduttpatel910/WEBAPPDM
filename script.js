@@ -62,7 +62,6 @@ function simulateDriverLocation() {
 }
 
 // Simulated alcohol test result
-// Simulated alcohol test result
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         const alcoholLevel = Math.floor(Math.random() * 300); // Simulate alcohol level between 0-300
@@ -76,5 +75,4 @@ document.addEventListener('DOMContentLoaded', () => {
             alcoholMessage.style.color = "green";
         }
     }, 2000); // Simulate a delay for test result
-
 });
