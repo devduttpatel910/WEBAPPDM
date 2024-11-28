@@ -2,57 +2,49 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f4f8; /* Light background */
-    color: #333; /* Dark text */
+    background-color: #f5f5f5; /* Light theme background */
+    color: #333; /* Default text color */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 h1 {
+    font-size: 36px;
     margin: 10px 0;
-    font-size: 36px; /* Larger DMCabs heading */
-    color: #004080; /* Dark blue */
-    text-align: center;
+    color: #1a73e8; /* Accent color */
 }
 
 button {
-    margin: 10px;
-    padding: 12px 20px;
-    font-size: 18px;
-    background-color: #4a90e2;
+    background-color: #1a73e8;
     color: white;
     border: none;
-    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #357ab7;
+    background-color: #155ab6;
 }
 
 #map {
     height: 70vh;
-    width: 90vw;
-    border: 2px solid #4a90e2;
-    margin-bottom: 20px;
-}
-
-#alcohol-meter {
-    width: 90vw;
-    padding: 10px;
-    background-color: #e8f5e9; /* Light green */
-    border: 1px solid #c8e6c9;
+    width: 80vw;
+    border: 2px solid #1a73e8;
     border-radius: 10px;
+    margin-top: 10px;
+}
+
+#alcohol-meter-box {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #1a73e8;
+    border-radius: 5px;
+    width: 80vw;
     text-align: center;
-    margin-bottom: 20px;
-}
-
-#alcohol-meter h2 {
-    color: #2e7d32; /* Green */
-}
-
-#alcohol-value, #alcohol-message {
     font-size: 18px;
-    margin: 5px 0;
 }
