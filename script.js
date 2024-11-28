@@ -1,5 +1,5 @@
 // Initialize the map and set view to a default location (centered on the world)
-const map = L.map('map').setView([20, 0], 2); // World view to start
+const map = L.map('map').setView([20, 0], 2);
 
 // Add satellite map layer from Mapbox
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGV2ZHV0dDAzIiwiYSI6ImNtM3k0YmUxdDFmb3cybHNjMGh5dGFoMXIifQ.ilgwEjlw8e8FhQMWgD9ndw', {
