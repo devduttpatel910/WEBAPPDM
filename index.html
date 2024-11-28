@@ -1,23 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DMCabs Services</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mapbox & Alcohol Test</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 70vh;
+            width: 100%;
+        }
+        #alcohol-message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <h1>DMCabs Services</h1>
     <button onclick="findUserLocation()">Find My Location</button>
     <button onclick="simulateDriverLocation()">Find Driver</button>
     <div id="map"></div>
-    <div id="alcohol-meter-box">
-        <h3>Alcohol Test Meter</h3>
-        <div id="alcohol-message">Checking...</div>
-    </div>
+    <div id="alcohol-message">Checking...</div>
+
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+    <script src="your_script.js"></script> <!-- Replace with your JavaScript file name -->
 </body>
 </html>
