@@ -1,22 +1,25 @@
-// Initialize the map and set view to a default location (centered on the world)
-const map = L.map('map').setView([20, 0], 2); // World view to start
+document.addEventListener("DOMContentLoaded", () => {
+    // Initialize map and set view to a default location.
+    const map = L.map('map').setView([20, 0], 2); // World view to start
 
-// Add satellite map layer from Mapbox
-L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZGV2ZHV0dDAzIiwiYSI6ImNtM2JyaWp5ejFydjAycXF4NHM1bHptMmMifQ.i6yTVvdvB2M5XyzI7K5ezw', {
-    attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> contributors',
-    tileSize: 512,
-    zoomOffset: -1
-}).addTo(map);
+    // Add satellite map layer from Mapbox
+    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=sk.eyJ1IjoiZGV2ZHV0dDAzIiwiYSI6ImNtM2JyaWp5ejFydjAycXF4NHM1bHptMmMifQ.i6yTVvdvB2M5XyzI7K5ezw', {
+        attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> contributors',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(map);
 
-let userMarker, driverMarker;
+    let userMarker, driverMarker;
 
-// Custom car icon
-// Updated car icon for better contrast
-const carIcon = L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/1995/1995470.png', // White car icon URL
-    iconSize: [40, 40], // Slightly larger for visibility
-    iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
+    // Car icon setup
+    const carIcon = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/1995/1995470.png', // Light-colored car icon
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -40]
+    });
+
+    // Existing findUserLocation and simulateDriverLocation functions...
 });
 
 // Function to find and display user's location
