@@ -62,17 +62,5 @@ function simulateDriverLocation() {
 }
 
 // Simulated alcohol test result
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        const alcoholLevel = Math.floor(Math.random() * 300); // Simulate alcohol level between 0-300
-        const alcoholMessage = document.getElementById('alcohol-message');
 
-        if (alcoholLevel > 150) {
-            alcoholMessage.innerText = "Warning: High Alcohol Level!";
-            alcoholMessage.style.color = "red";
-        } else {
-            alcoholMessage.innerText = "Alcohol Level Normal. Ride can proceed.";
-            alcoholMessage.style.color = "green";
-        }
-    }, 2000); // Simulate a delay for test result
 });
