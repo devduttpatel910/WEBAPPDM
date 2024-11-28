@@ -13,9 +13,9 @@ let userMarker, driverMarker;
 // Custom car icon
 const carIcon = L.icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/481/481200.png', // Car icon URL
-    iconSize: [40, 40], // Increased icon size for better visibility
-    iconAnchor: [20, 40], // Center the icon
-    popupAnchor: [0, -40] // Popup anchor point
+    iconSize: [32, 32], // Size of the icon
+    iconAnchor: [16, 32], // Anchor point
+    popupAnchor: [0, -32] // Popup anchor point
 });
 
 // Function to find and display user's location
@@ -61,17 +61,18 @@ function simulateDriverLocation() {
         .bindPopup("Driver is nearby").openPopup();
 }
 
-// Simulate alcohol test (static value for demonstration)
+// Simulated alcohol test result
 document.addEventListener('DOMContentLoaded', () => {
-    const alcoholLevel = Math.floor(Math.random() * 600); // Random alcohol level for testing
-    document.getElementById('alcohol-value').innerText = `Level: ${alcoholLevel}`;
-    if (alcoholLevel > 500) {
-        document.getElementById('alcohol-message').innerText = "Warning: High Alcohol Level!";
-        document.getElementById('alcohol-meter').style.backgroundColor = "#ffebee"; // Light red for warning
-        document.getElementById('alcohol-meter').style.color = "#c62828"; // Red text for warning
-    } else {
-        document.getElementById('alcohol-message').innerText = "Alcohol Level Normal. Ride can proceed.";
-        document.getElementById('alcohol-meter').style.backgroundColor = "#e8f5e9"; // Green background for normal
-        document.getElementById('alcohol-meter').style.color = "#2e7d32"; // Green text for normal
-    }
+    setTimeout(() => {
+        const alcoholLevel = Math.floor(Math.random() * 300); // Simulate alcohol level between 0-300
+        const alcoholMessage = document.getElementById('alcohol-message');
+
+        if (alcoholLevel > 150) {
+            alcoholMessage.innerText = "Warning: High Alcohol Level!";
+            alcoholMessage.style.color = "red";
+        } else {
+            alcoholMessage.innerText = "Alcohol Level Normal. Ride can proceed.";
+            alcoholMessage.style.color = "green";
+        }
+    }, 2000); // Simulate a delay for test result
 });
