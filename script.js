@@ -11,11 +11,12 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/
 let userMarker, driverMarker;
 
 // Custom car icon
+// Updated car icon for better contrast
 const carIcon = L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/481/481200.png', // Car icon URL
-    iconSize: [32, 32], // Size of the icon
-    iconAnchor: [16, 32], // Anchor point
-    popupAnchor: [0, -32] // Popup anchor point
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/1995/1995470.png', // White car icon URL
+    iconSize: [40, 40], // Slightly larger for visibility
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
 });
 
 // Function to find and display user's location
