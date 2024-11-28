@@ -4,8 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DMCabs Services</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5; /* Light theme */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #1a73e8;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #map {
+            height: 70vh;
+            width: 80vw;
+            border: 2px solid #1a73e8;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        #alcohol-meter-box {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8e8e8;
+            border: 1px solid #1a73e8;
+            border-radius: 5px;
+            width: 80vw;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>DMCabs Services</h1>
@@ -17,6 +63,77 @@
         <div id="alcohol-message">Checking...</div>
     </div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+    <script>
+        const map = L.map('map').setView([20, 0], 2);
+
+        // Correct Mapbox access token
+        const mapboxAccessToken = 'pk.eyJ1IjoiZGV2ZHV0dDAzIiwiYSI6ImNtM3k0YmUxdDFmb3cybHNjMGh5dGFoMXIifQ.ilgwEjlw8e8FhQMWgD9ndw';
+        
+        L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=${mapboxAccessToken}`, {
+            attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(map);
+
+        let userMarker, driverMarker;
+
+        const carIcon = L.icon({
+            iconUrl: 'https://cdn-icons-png.flaticon.com/512/481/481200.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        function findUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+
+                    if (userMarker) map.removeLayer(userMarker);
+
+                    userMarker = L.marker([userLat, userLng]).addTo(map)
+                        .bindPopup("You are here").openPopup();
+
+                    map.setView([userLat, userLng], 14);
+                }, error => {
+                    alert(`Geolocation error: ${error.message}`);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function simulateDriverLocation() {
+            if (!userMarker) {
+                alert("Find your location first!");
+                return;
+            }
+
+            const userLocation = userMarker.getLatLng();
+            const driverLat = userLocation.lat + (Math.random() * 0.02 - 0.01);
+            const driverLng = userLocation.lng + (Math.random() * 0.02 - 0.01);
+
+            if (driverMarker) map.removeLayer(driverMarker);
+
+            driverMarker = L.marker([driverLat, driverLng], { icon: carIcon }).addTo(map)
+                .bindPopup("Driver is nearby").openPopup();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const alcoholLevel = Math.floor(Math.random() * 300);
+                const alcoholMessage = document.getElementById('alcohol-message');
+
+                if (alcoholLevel > 150) {
+                    alcoholMessage.innerText = "Warning: High Alcohol Level!";
+                    alcoholMessage.style.color = "red";
+                } else {
+                    alcoholMessage.innerText = "Alcohol Level Normal. Ride can proceed.";
+                    alcoholMessage.style.color = "green";
+                }
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
