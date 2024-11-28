@@ -12,10 +12,10 @@ let userMarker, driverMarker;
 
 // Custom car icon
 const carIcon = L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/481/481200.png', // Car icon URL
-    iconSize: [32, 32], // Size of the icon
-    iconAnchor: [16, 32], // Anchor point
-    popupAnchor: [0, -32] // Popup anchor point
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/481/481200.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
 });
 
 // Function to find and display user's location
@@ -25,14 +25,11 @@ function findUserLocation() {
             const userLat = position.coords.latitude;
             const userLng = position.coords.longitude;
 
-            // Remove old user marker if it exists
             if (userMarker) map.removeLayer(userMarker);
 
-            // Add user marker
             userMarker = L.marker([userLat, userLng]).addTo(map)
                 .bindPopup("You are here").openPopup();
-            
-            // Center map to user's location
+
             map.setView([userLat, userLng], 14);
         }, error => {
             alert(`Geolocation error: ${error.message}`);
@@ -53,10 +50,8 @@ function simulateDriverLocation() {
     const driverLat = userLocation.lat + (Math.random() * 0.02 - 0.01);
     const driverLng = userLocation.lng + (Math.random() * 0.02 - 0.01);
 
-    // Remove old driver marker if it exists
     if (driverMarker) map.removeLayer(driverMarker);
 
-    // Add driver marker with the custom car icon
     driverMarker = L.marker([driverLat, driverLng], { icon: carIcon }).addTo(map)
         .bindPopup("Driver is nearby").openPopup();
 }
@@ -64,7 +59,7 @@ function simulateDriverLocation() {
 // Simulated alcohol test result
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
-        const alcoholLevel = Math.floor(Math.random() * 300); // Simulate alcohol level between 0-300
+        const alcoholLevel = Math.floor(Math.random() * 300);
         const alcoholMessage = document.getElementById('alcohol-message');
 
         if (alcoholLevel > 150) {
@@ -74,5 +69,5 @@ document.addEventListener('DOMContentLoaded', () => {
             alcoholMessage.innerText = "Alcohol Level Normal. Ride can proceed.";
             alcoholMessage.style.color = "green";
         }
-    }, 2000); // Simulate a delay for test result
+    }, 2000); // Simulate delay for test result
 });
